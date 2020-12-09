@@ -4,17 +4,12 @@ let data =
   readLines "input05.txt"
   |> Seq.toList
 
-let strRev α=let N=System.Globalization.StringInfo.GetTextElementEnumerator(α)
-             List.unfold(fun n->if n then Some(N.GetTextElement(),N.MoveNext()) else None)(N.MoveNext())|>List.rev|>String.concat ""
-
-
 let parseChar char =
   match char with
     | 'B' -> '1'
     | 'F' -> '0'
     | 'R' -> '1'
     | 'L' -> '0'
-
 
 let seatIds =
   data
@@ -25,7 +20,6 @@ let seatIds =
   |> List.sort
 
 let taskA = seatIds |> List.max
-
 
 let taskB=
   seatIds
