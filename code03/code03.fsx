@@ -1,6 +1,3 @@
-
-type Step = { x : int; y : int; count: int}
-
 let readLines filePath = System.IO.File.ReadLines(filePath);;
 
 let input =
