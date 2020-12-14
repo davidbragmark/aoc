@@ -5,13 +5,19 @@ let input  : string [] =
   readLines "input06.txt"
   |> fun x -> x.Split([|"\n\n"|], System.StringSplitOptions.RemoveEmptyEntries)
 
+let union (group : string) =
+  Seq.distinct group |> Seq.filter (fun c -> System.Char.IsLetter c) |> Seq.length
+
+let intersection (group  : string) =
+  group.Split([|'\n'|], System.StringSplitOptions.RemoveEmptyEntries)
+  |> Seq.map Set.ofSeq |> Set.intersectMany |> Seq.length
+
 let taskA =
   input
-  |> Seq.map
-        (fun group -> Seq.distinct group |> Seq.filter (fun c -> System.Char.IsLetter c) |> Seq.length) |> Seq.sum
+  |> Seq.map union
+  |> Seq.sum
 
 let taskB =
   input
-  |> Seq.map
-        (fun group -> group.Split([|'\n'|], System.StringSplitOptions.RemoveEmptyEntries)
-                      |> Seq.map Set.ofSeq |> Set.intersectMany |> Seq.length) |> Seq.sum
+  |> Seq.map intersection
+  |> Seq.sum
