@@ -8,5 +8,10 @@ let input  : string [] =
 let taskA =
   input
   |> Seq.map
-        (fun group -> Seq.distinct group |> Seq.filter (fun c -> System.Char.IsLetter c))
-  |> Seq.sumBy Seq.length
+        (fun group -> Seq.distinct group |> Seq.filter (fun c -> System.Char.IsLetter c) |> Seq.length) |> Seq.sum
+
+let taskB =
+  input
+  |> Seq.map
+        (fun group -> group.Split([|'\n'|], System.StringSplitOptions.RemoveEmptyEntries)
+                      |> Seq.map Set.ofSeq |> Set.intersectMany |> Seq.length) |> Seq.sum
