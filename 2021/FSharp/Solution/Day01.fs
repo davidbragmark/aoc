@@ -4,8 +4,7 @@ module Day01 =
   let part1 (input: int []) =
     input
     |> Array.pairwise
-    |> Array.filter (fun (first, second) -> second > first)
-    |> Array.length
+    |> Array.fold (fun (state: int) (first, second) -> if second > first then state + 1 else state) 0
 
   let part2 (input: int []) =
     input
