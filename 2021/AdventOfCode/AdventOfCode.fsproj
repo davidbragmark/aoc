@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Input/Day01.fs" />
-    <Compile Include="Input/Day02.fs" />
+    <Compile Include="Input/**/*.fs" />
+    <Compile Include="Solution/**/*.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
