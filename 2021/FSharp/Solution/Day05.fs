@@ -12,7 +12,6 @@ module Day05 =
   let parseNumber (split_char: string) (line: string) =
     Regex.Split(line, split_char)
     |> List.ofArray
-    |> fun x -> printfn $"Split line: %A{x}"; x
     |> fun output ->
       let c1 = output.[0].Split "," |> fun x -> int x.[0], int x.[1]
       let c2 = output.[1].Split "," |> fun x -> int x.[0], int x.[1]

@@ -14,8 +14,8 @@ type Board =
 type Selector = (Board -> int) -> Board list -> Board
 
 module Day04 =
-  let parseNumber (char: string) (line: string) =
-    Regex.Split(line, char)
+  let parseNumber (split_char: string) (line: string) =
+    Regex.Split(line, split_char)
     |> List.ofArray
     |> List.map int
 
@@ -53,12 +53,13 @@ module Day04 =
 
     numbers, boards
 
+  //  Actions
   let hasWon (board: DrawnBoardNumber list list) =
     let winCondition = fun board ->
      board
      |> List.exists (fun line ->
        line
-       |> List.forall (fun drawnNumber -> drawnNumber.drawn = true))
+       |> List.forall (fun drawnNumber -> drawnNumber.drawn))
 
     let p1 = board |> List.transpose |> winCondition
     let p2 = board |> winCondition

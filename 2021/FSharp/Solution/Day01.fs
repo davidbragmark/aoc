@@ -3,8 +3,9 @@ namespace AdventOfCode.Solution
 module Day01 =
   let part1 (input: int []) =
     input
-    |> Array.pairwise
-    |> Array.fold (fun (state: int) (first, second) -> if second > first then state + 1 else state) 0
+    |> List.ofArray
+    |> List.pairwise
+    |> List.fold (fun (state: int) (first, second) -> if second > first then state + 1 else state) 0
 
   let part2 (input: int []) =
     input
